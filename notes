@@ -1,0 +1,50 @@
+Smart constructor - constructor that does some checks before allowing the obj to be made
+
+surrounding a binary function with `` marks makes it infix
+
+ordering is defined by returning an Ordering value: LT/GT/EQ
+
+import Data.List
+
+@ is the as pattern. Allows you to alias a whole value while still pattern matching inner parts
+  Example: 
+    sorted [] = True
+    sorted [_] = True
+    sorted (x : r@(y:_)) = x < y && sorted 
+
+=> denotes a constraint on the possible types that are supported
+  M.insert :: Ord k => k -> a -> M.Map k ak -> M.Map k a
+  This means k can ony be of type Ord
+  this is ad hoc polymorphism
+
+Monoid - an associative binary operation with an element that does not affect the outcome
+  in the example, this is a cache in a binary tree that stores the sum of the node's subtree
+    binary, associative operation: sum operation
+    element that does not affect the outcome: the cache
+  mempty - neutral element
+  mappend - associative binary operation
+  may have multiple implementations for just one type
+  Important monoids
+    All - implements the monoid structure of Bool under the operation (&&) with neutral element True
+      - (||) with neutral element False
+    Sum - uses addition as the operation  and 0 as a neutral element
+    Product - uses multiplication, 1 is neutral element
+
+
+Semigroup - Monoid without the neutral element
+  <> - mappend - associative binary operation
+
+Data x - An ADT - a type where we declare the shape of each of the elements
+
+Functor - data type supporting a function like map
+
+Bang patterns - forces evaluation of a statement that laziness may skip
+  use a ! to indicate what should always be evaluated
+
+irrefutable pattern - a way to delay evaluation of a statement
+  matching never fails but it's only ever evaluated when needed
+  use -(...) notation to make something an irrefutable patten
+  rarely used but sometimes they are key to performance
+
+undefined - represents computations that don't end
+  can be used in place of things you haven't yet implemented
