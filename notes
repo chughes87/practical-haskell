@@ -48,3 +48,16 @@ irrefutable pattern - a way to delay evaluation of a statement
 
 undefined - represents computations that don't end
   can be used in place of things you haven't yet implemented
+
+^.x is a way to view a property using lenses on a value
+  i.e:
+    lastName :: Lens Person String
+    lastName = lens (\(Person f _) -> f)
+                    ...
+    let p = Person "John" "Smith"
+    p^.lastName -- "Smith"
+
+.~ is a way to set a value using a lens
+
+lens includes & operator which flips the argument lists
+  usually the data is given last, this lets you give it first for readability

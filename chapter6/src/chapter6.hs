@@ -5,7 +5,7 @@
 
 import Data.List
 import qualified Data.Map as M
-import Control.Lens
+import Lens.Micro
 
 -- minimumB :: (a -> a) -> [a] -> a
 -- minimumB fn list = foldr (\acc v -> min acc (fn v)) 0 list
